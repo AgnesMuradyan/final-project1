@@ -21,6 +21,9 @@ class Config(models.Model):
     conversion_revenue = models.IntegerField()
     frequency_capping = models.IntegerField()
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    code = models.CharField(max_length=100)
 
 class Bid(models.Model):
     external_id = models.IntegerField()
@@ -29,9 +32,6 @@ class Bid(models.Model):
     cat = models.ManyToOneRel(Category, on_delete=models.CASCADE)
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
-    code = models.CharField(max_length=100)
 
 
 class Creative(models.Model):
