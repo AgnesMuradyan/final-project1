@@ -1,2 +1,0 @@
-def esim():
-    print("yay")
