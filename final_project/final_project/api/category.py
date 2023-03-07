@@ -17,9 +17,10 @@ class CategoryView(View):
 
     def post(self, request):
         data = json.loads(request.body)
-        if 'code' in data:
+        if 'code' in data and 'name' in data:
             category = Category.objects.create(
-                code=Category.objects.get(pk=data['pk'])
+                code=Category.objects.get(pk=data['pk']),
+                name=data['name']
             )
         else:
             return failed_status("invalid_post_data")
