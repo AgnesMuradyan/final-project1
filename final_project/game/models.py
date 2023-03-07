@@ -21,17 +21,17 @@ class Config(models.Model):
     conversion_revenue = models.IntegerField()
     frequency_capping = models.IntegerField()
 
+
 class Category(models.Model):
+    code = models.CharField(primary_key=True)
     name = models.CharField(max_length=100)
-    code = models.CharField(max_length=100)
+
 
 class Bid(models.Model):
     external_id = models.IntegerField()
     price = models.FloatField(validators=[MinValueValidator(0.01)])
     image_url = models.TextField()
     cat = models.ManyToOneRel(Category, on_delete=models.CASCADE)
-
-
 
 
 class Creative(models.Model):
