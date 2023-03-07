@@ -23,7 +23,7 @@ class Config(models.Model):
 
 
 class Category(models.Model):
-    code = models.CharField(primary_key=True)
+    code = models.CharField(primary_key=True,max_length=200)
     name = models.CharField(max_length=100)
 
 
@@ -31,13 +31,13 @@ class Bid(models.Model):
     external_id = models.IntegerField()
     price = models.FloatField(validators=[MinValueValidator(0.01)])
     image_url = models.TextField()
-    cat = models.ManyToOneRel(Category, on_delete=models.CASCADE)
+    cat = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
 class Creative(models.Model):
     external_id = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
-    categories = models.ManyToOneRel(Category, on_delete=models.CASCADE)
+    categories = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
 class Campaign(models.Model):
